@@ -1,0 +1,390 @@
+
+
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+nav,
+header,
+section,
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+
+@font-face {
+  src: url(../fonts/poppins.woff2);
+  font-family: "Poppins";
+}
+
+body {
+  font-family: "Poppins";
+}
+
+
+a {
+  text-decoration: none;
+  color: unset;
+}
+
+h2 {
+  font-size: 34px;
+}
+
+h3 {
+  font-size: 1.2rem;
+}
+
+h1,
+h2,
+h3 {
+  font-weight: bold;
+}
+
+img {
+  max-width: 100%;
+}
+
+/* Navigasi */
+
+nav {
+
+  background-color: #aa766b;
+  box-shadow: 0 3px 7px -2px #905548;
+  width: 100%;
+  padding-top: 10px;
+  padding-bottom: 10px;
+  position: fixed;
+  z-index: 500;
+}
+
+img.logo {
+  height: 40px;
+  margin-left: 20px;
+}
+
+div.navigasi {
+  margin-left: auto;
+  margin-right: 15px;
+}
+
+nav a {
+  color: #fff;
+  padding-left: 8px;
+  padding-right: 8px;
+}
+
+a.shop {
+  margin-right: 100px;
+}
+
+a.chat {
+  margin-right: 30px;
+  background-color: #553029;
+  color: #fff;
+  padding-top: 5px;
+  padding-right: 15px;
+  padding-bottom: 5px;
+  padding-left: 15px;
+  border-radius: 10px;
+}
+
+/* HEADER */
+
+header,
+section {
+  padding-top: 80px;
+  padding-bottom: 80px;
+  margin-bottom: 80px;
+}
+
+header div.kiri,
+header div.kanan {
+  width: 50%;
+  padding: 50px;
+}
+
+header h1 {
+  margin-bottom: 20px;
+}
+
+header p {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
+div.olshop img {
+  width: 40px;
+  aspect-ratio: 1;
+  margin-right: 10px;
+}
+
+/* Best Seller */
+
+section.best-seller {
+  position: relative;
+  background-color: #eee6dc;
+  text-align: center;
+}
+
+
+section.best-seller::before,
+section.best-seller::after {
+  position: absolute;
+  content: "";
+  width: 100%;
+  height: 76px;
+  background-image: url(../images/background/garis-atas.png);
+  background-size: cover;
+
+  top: -60px;
+  left: 0;
+}
+
+section.best-seller::after {
+  height: 60px;
+  background-image: url(../images/background/garis-bawah.png);
+  top: unset;
+  bottom: -60px;
+}
+
+section.best-seller h2 {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+
+
+section.best-seller > p {
+  font-size: 18px;
+  margin-bottom: 40px;
+  width: 100%;
+}
+
+div.produk {
+  padding: 20px;
+  width: 25%;
+}
+
+div.produk img {
+  transition: all 0.3s ease;
+  border-radius: 15px;
+  box-shadow: 0 3px 10px -2px #000;
+}
+
+
+
+
+div.produk img:hover {
+
+  transform: scale(0.9);
+  border-radius: 50%;
+}
+
+div.produk p {
+  margin-top: 15px;
+  font-weight: bold;
+}
+
+/* About US */
+
+section.about-us {
+  max-width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+section.about-us h2 {
+  margin-bottom: 30px;
+  width: 100%;
+}
+
+section.about-us img {
+  width: 800px;
+  max-width: 100%;
+  margin: auto;
+}
+
+
+section.about-us p:nth-child(2) {
+  margin-bottom: 40px;
+}
+
+section.about-us p:nth-child(4) {
+  margin-top: 40px;
+}
+
+/* OUR TEAM */
+
+section.our-team {
+  background-color: #eee6dc;
+  box-shadow: inset 0px 0px 23px -6px #707070;
+  text-align: center;
+}
+
+section.our-team h2 {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+section.our-team > p {
+  margin-bottom: 30px;
+  font-size: 18px;
+  width: 800px;
+  max-width: 90%;
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+}
+
+div.team {
+  width: 25%;
+  padding: 20px;
+}
+
+div.team img {
+  width: 100%;
+  aspect-ratio: 1/1;
+  object-fit: cover;
+  box-shadow: 0 3px 10px -2px #000;
+  border-radius: 50px 0px 50px 0px;
+  margin-bottom: 10px;
+}
+
+/* REVIEW */
+
+section.review {
+  background-image: url(../images/background/bg-review.svg);
+  background-size: contain;
+  background-repeat: no-repeat;
+  padding-left: 40px;
+  padding-right: 40px;
+  justify-content: space-around;
+  /* align-items: stretch; membuat tinggi elemen di dalam .review .baris seragam */
+  text-align: center;
+}
+
+section.review h2 {
+  margin-bottom: 20px;
+  width: 100%;
+}
+
+section.review > p {
+  margin-bottom: 40px;
+  font-size: 18px;
+  width: 100%;
+}
+
+div.testimoni {
+  width: 30%;
+  display: flex;
+  flex-wrap: wrap;
+  padding: 35px 50px;
+  box-shadow: 0px 0px 12px -10px #000;
+  background-color: #fff;
+}
+
+div.testimoni img {
+  width: 60px;
+  height: 60px;
+  margin-right: 15px;
+  object-fit: cover;
+}
+
+div.profile {
+  text-align: left;
+  display: block;
+  margin-bottom: 30px;
+  width: calc(100% - 75px);
+}
+
+div.profile p {
+  width: 100%;
+  text-align: left;
+}
+
+div.testimoni > p {
+  width: 100%;
+  text-align: left;
+}
+
+/* CONTACT US */
+section.contact-us {
+  margin-bottom: 20px;
+}
+
+section.contact-us iframe {
+  width: 100%;
+  height: 300px;
+  border: 0;
+}
+
+div.kontak {
+  width: 30%;
+  /* color mengatur warna tulisan */
+  color: #73483f;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* FOOTER */
+
+footer {
+  background-color: #73483f;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  color: #fff;
+  padding-right: 40px;
+  padding-left: 40px;
+}
+
+footer div.navigasi {
+  margin-left: 20px;
+  margin-right: auto;
+}
+
+footer div.navigasi a {
+  padding: 8px;
+}
+
+/* UNTUK kode RESPONSIF hari ke 3 tulis DI BAWAH sini */
+
+@media (max-width: 600px) {
+  div.navigasi {
+    display: none;
+  }
+
+  a.shop {
+    margin-right: 20px;
+    margin-left: auto;
+  }
+
+  header div.kiri,
+  header div.kanan {
+    width: 100%;
+    padding: 30px;
+    text-align: center;
+  }
+
+  div.produk,
+  div.team {
+    width: 50%;
+  }
+
+  div.testimoni {
+    width: 100%;
+    margin-bottom: 30px;
+  }
+}
+
+/* Kode CSS Selesai di sini */
