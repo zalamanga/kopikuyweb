@@ -1,0 +1,14 @@
+{
+  "name": "kopikuyweb",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Demo katalog dan keranjang Kopi Kuy tanpa backend.",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "test:browser": "playwright test"
+  },
+  "devDependencies": {
+    "@playwright/test": "1.64.1"
+  }
+}

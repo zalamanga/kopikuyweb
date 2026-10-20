@@ -1,0 +1,37 @@
+:root { --kopi-brown: #73483f; --kopi-cream: #f4ede5; }
+body { background: var(--kopi-cream); color: #212529; }
+.bg-nav, .site-footer { background-color: var(--kopi-brown); color: #fff; }
+.site-footer a { color: #fff; }
+.navbar-collapse { gap: 0.75rem; }
+.navbar-dark .navbar-nav .nav-link { color: #fff; }
+.btn-outline-danger { color: #a51f27; border-color: #a51f27; }
+.demo-note { color: #59453f; }
+.feedback { min-height: 1.5rem; }
+.feedback[data-tone="error"] { color: #a51f27; }
+.empty-state { background: #fff; border: 1px solid #d1c4bc; padding: 2rem; border-radius: 0.375rem; }
+.product-card { height: 100%; }
+.product-image { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; background: #eee6dc; }
+.product-image[data-fallback="true"] { object-fit: contain; padding: 2rem; }
+.product-card .card-body { display: flex; flex-direction: column; }
+.product-card .add-to-cart { margin-top: auto; }
+.cart-item { display: grid; grid-template-columns: 64px 1fr auto auto; align-items: center; gap: 1rem; }
+.cart-item img { width: 64px; height: 64px; object-fit: cover; background: #eee6dc; }
+.cart-item .item-name { overflow-wrap: anywhere; }
+.summary { margin: 0; }
+.summary > div { display: flex; justify-content: space-between; gap: 1rem; margin-bottom: 1rem; }
+.summary dt { font-weight: 400; }
+.summary dd { margin: 0; text-align: right; }
+.summary-total { border-top: 1px solid #d1c4bc; padding-top: 1rem; font-weight: bold; }
+.summary-total dt { font-weight: bold; }
+.skip-link { position: fixed; left: 1rem; top: -5rem; z-index: 2000; padding: 0.5rem 1rem; background: #fff; color: #111; }
+.skip-link:focus { top: 0.5rem; }
+:focus-visible { outline: 3px solid #111; outline-offset: 3px; box-shadow: 0 0 0 5px #fff; }
+@media (max-width: 575px) {
+  .cart-item { grid-template-columns: 56px 1fr; gap: 0.75rem; }
+  .cart-item img { width: 56px; height: 56px; }
+  .cart-item .item-total { grid-column: 2; }
+  .cart-item button { grid-column: 2; justify-self: start; }
+}
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}

@@ -27,7 +27,7 @@ footer {
 }
 
 body {
-  font-family: "Poppins";
+  font-family: "Poppins", Arial, sans-serif;
 }
 
 
@@ -58,7 +58,7 @@ img {
 
 nav {
 
-  background-color: #aa766b;
+  background-color: #73483f;
   box-shadow: 0 3px 7px -2px #905548;
   width: 100%;
   padding-top: 10px;
@@ -115,6 +115,14 @@ header div.kanan {
 
 header h1 {
   margin-bottom: 20px;
+}
+
+header .demo-note {
+  flex-basis: 100%;
+  padding: 0 24px;
+  font-size: 14px;
+  text-align: center;
+  color: #59453f;
 }
 
 header p {
@@ -357,7 +365,6 @@ footer div.navigasi a {
   padding: 8px;
 }
 
-/* UNTUK kode RESPONSIF hari ke 3 tulis DI BAWAH sini */
 
 @media (max-width: 600px) {
   div.navigasi {
@@ -385,6 +392,39 @@ footer div.navigasi a {
     width: 100%;
     margin-bottom: 30px;
   }
+
+  div.kontak {
+    width: 100%;
+    padding: 0 20px;
+    overflow-wrap: anywhere;
+  }
+
+  section.review {
+    padding-left: 20px;
+    padding-right: 20px;
+  }
+
+  div.testimoni {
+    padding: 24px;
+  }
+
+  footer {
+    padding: 20px;
+    gap: 12px;
+    text-align: center;
+  }
 }
 
-/* Kode CSS Selesai di sini */
+@media (min-width: 601px) and (max-width: 900px) {
+  a.shop { margin-right: 12px; }
+  div.navigasi { margin-right: 8px; }
+  nav a { padding-left: 4px; padding-right: 4px; }
+  div.testimoni { width: 100%; margin-bottom: 24px; padding: 24px; }
+  div.kontak { width: 100%; }
+}
+
+:focus-visible { outline: 3px solid #111; outline-offset: 3px; box-shadow: 0 0 0 5px #fff; }
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  div.produk img { transition: none; }
+}
