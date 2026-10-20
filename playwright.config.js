@@ -1,6 +1,9 @@
 import { defineConfig } from '@playwright/test';
 import { fileURLToPath } from 'node:url';
 
+const externalServer = process.env.PLAYWRIGHT_BASE_URL;
+const baseURL = externalServer || 'http://127.0.0.1:8765';
+
 export default defineConfig({
   testDir: './tests',
   testMatch: 'browser.spec.js',
@@ -13,13 +16,13 @@ export default defineConfig({
   use: {
     browserName: 'chromium',
     channel: process.env.PLAYWRIGHT_CHANNEL || undefined,
-    baseURL: 'http://127.0.0.1:8765',
+    baseURL,
     viewport: { width: 1280, height: 900 },
     reducedMotion: 'reduce',
     screenshot: 'only-on-failure',
     trace: 'retain-on-failure',
   },
-  webServer: {
+  webServer: externalServer ? undefined : {
     command: 'python -m http.server 8765 --bind 127.0.0.1',
     cwd: fileURLToPath(new URL('.', import.meta.url)),
     url: 'http://127.0.0.1:8765/produk.html',

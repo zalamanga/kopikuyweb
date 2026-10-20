@@ -1,6 +1,6 @@
 import { test as base, expect } from '@playwright/test';
 
-const origin = 'http://127.0.0.1:8765';
+const origin = new URL(process.env.PLAYWRIGHT_BASE_URL || 'http://127.0.0.1:8765').origin;
 const cartKey = 'list_belanja';
 const cappuccino = 'Cappuccino Arabica';
 const pahit = 'Pahit Arabica';

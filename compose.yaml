@@ -1,0 +1,12 @@
+services:
+  web:
+    build: .
+    ports:
+      - "127.0.0.1:${APP_PORT:-18084}:8080"
+    read_only: true
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=16m
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true

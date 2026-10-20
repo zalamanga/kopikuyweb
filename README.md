@@ -36,6 +36,34 @@ Buka halaman berikut di browser:
 
 Tekan `Ctrl+C` pada terminal untuk menghentikan server.
 
+## Menjalankan dengan Docker
+
+Pasang Docker Engine dengan Compose, atau Docker Desktop dan aktifkan Linux containers. Dari folder repo, jalankan:
+
+```powershell
+docker compose up -d --build
+docker compose ps
+```
+
+Buka [Kopi Kuy](http://127.0.0.1:18084). Nginx melayani website statis; Python, Node.js, PHP, dan database tidak perlu dipasang pada host. Unduhan image pertama membutuhkan internet.
+
+Container berjalan sebagai pengguna `nginx`, memakai filesystem baca saja dan direktori sementara di `/tmp`. Hanya file website dan konfigurasi Nginx yang masuk ke image. Port `18084` terikat ke komputer lokal. Jika port tersebut sudah dipakai, pilih port lain sebelum memulai:
+
+```powershell
+$env:APP_PORT = '18085'
+docker compose up -d --build
+```
+
+Dengan contoh itu, buka `http://127.0.0.1:18085`. Untuk menghentikan dan menghapus container serta network proyek:
+
+```powershell
+docker compose down
+```
+
+Keranjang tersimpan di browser. Gunakan alamat dan port yang sama untuk membuka kembali keranjang sebelumnya. Perubahan HTML, JSON, CSS, atau JavaScript memerlukan build ulang dengan `docker compose up -d --build`; folder sumber tidak dipasang sebagai volume.
+
+Image dasar Nginx dikunci dengan digest di `Dockerfile`. Untuk memperbaruinya, ambil digest terbaru dari image resmi `nginx:stable-alpine`, perbarui baris `FROM`, lalu build dan jalankan tes kembali.
+
 ## Data dan keranjang
 
 Seluruh katalog berasal dari `data.json` lokal. Pemilihan kategori, pencarian, dan pengurutan harga berjalan di browser tanpa mengambil katalog dari API eksternal.
@@ -82,6 +110,10 @@ fonts/          Font lokal
 images/         Gambar dan placeholder lokal
 package.json    Perintah tes pengembangan
 package-lock.json Versi dependency pengembangan yang dikunci
+Dockerfile      Image Nginx untuk website statis
+compose.yaml    Port lokal, filesystem baca saja, dan pembatasan container
+docker/nginx.conf Konfigurasi HTTP dan tipe MIME
+.dockerignore   Daftar file yang boleh masuk konteks build
 ```
 
 ## Pengujian
@@ -109,7 +141,20 @@ npm run test:browser
 
 Tes browser memakai Python 3 untuk memulai server lokal otomatis pada port `8765`. Playwright memblokir permintaan nonlokal dan memakai data simulasi; kontak maupun transaksi eksternal tidak dijalankan.
 
+Untuk menguji container yang sudah berjalan, arahkan suite yang sama ke Docker. Python tidak diperlukan pada cara ini:
+
+```powershell
+$env:PLAYWRIGHT_BASE_URL = 'http://127.0.0.1:18084'
+$env:PLAYWRIGHT_CHANNEL = 'msedge'
+npm run test:browser
+Remove-Item Env:PLAYWRIGHT_BASE_URL
+```
+
+Ganti port pengujian jika `APP_PORT` diubah. Tanpa `PLAYWRIGHT_BASE_URL`, suite kembali memakai server Python otomatis.
+
 Verifikasi: 13 tes unit lulus dengan Node.js 22.14.0; 10 skenario browser lulus dengan Playwright 1.64.1 melalui Microsoft Edge. Pemeriksaan mencakup penyimpanan keranjang, filter, kegagalan pemuatan dan percobaan ulang, serta tiga halaman pada lebar 320, 390, dan 768 piksel tanpa overflow horizontal.
+
+Verifikasi Docker: image Nginx 1.30.6 berhasil dibangun dan berstatus sehat dengan UID 101 serta filesystem baca saja. Sepuluh skenario browser yang sama lulus melalui container. Seluruh 60 file website yang dilayani HTTP cocok SHA256 dengan source; 12 pemeriksaan HTTP memastikan halaman/aset tersedia, file pengembangan tidak disajikan, dan metode tulis ditolak.
 
 Pemeriksaan manual melalui browser:
 
