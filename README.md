@@ -1,5 +1,7 @@
 # Kopi Kuy Web
 
+Alur katalog, normalisasi keranjang dan penyimpanan browser dijelaskan di [CODE_FLOW](docs/CODE_FLOW.md).
+
 Website latihan berupa halaman kedai kopi, katalog produk, dan keranjang belanja di browser. Data produk serta harga merupakan contoh untuk demonstrasi antarmuka.
 
 Versi ini memakai HTML, CSS, dan JavaScript ES modules dengan aset Bootstrap lokal. Aset jQuery dari source lama tetap disimpan; logika katalog dan keranjang yang baru memakai JavaScript tanpa jQuery. Varian PHP/MySQL lama disimpan secara terpisah dari repository statis ini.
